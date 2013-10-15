@@ -4,7 +4,7 @@ import java.util.*;
 public class JE4 {
 	public static void main(String[] args) {
 		// permutation
-		ArrayList<String> str = new ArrayList<String>();
+		ArrayList<String> str = new ArrayList<>();
 		str.add("a");
 		str.add("b");
 		str.add("c");
