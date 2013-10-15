@@ -12,7 +12,6 @@ public class JE4 {
 		str.add("e");
 
 		Permutation(str, 0);
-
 	}
 	
 	static void Permutation(ArrayList<String> str, int index) {
