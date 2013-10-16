@@ -12,9 +12,9 @@ public class JE5 {
 		IntList.add(8);
 		IntList.add(9);
 		
-		int res = Algorithm.countOdd(IntList, new testOdd());
+		int res = Algorithm.<Integer>countOdd(IntList, new testOdd());
 		System.out.println("The number of odds : " + res);
+		
 	}
 	
-
 }
