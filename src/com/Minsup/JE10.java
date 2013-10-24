@@ -52,8 +52,24 @@ public class JE10 {
 			System.out.println("");
 		}
 		
-		int min_group = findGroup(dist);
-		System.out.println("The minimum group : " + min_group);
+		// find box groups
+		int boxgroup[] = new int[numBox];
+		
+		for(int i=0; i<numBox; i++)
+			boxgroup[i] = -1;
+		
+		int groupnum=0;
+		for(int i=0; i<numBox; i++) {
+			if(boxgroup[i] < 0) {
+				boxgroup[i] = groupnum;
+				SearchGroup(dist, boxgroup, i, groupnum);
+				groupnum++;
+			}
+		}
+		
+		System.out.println("Group number is " + groupnum);
+		for(int i=0; i<numBox; i++) 
+			System.out.println("Box " + i + " : " + boxgroup[i]);
 	}
 	
 	static int CalcDist(int[][] barcode, int i, int j) {
@@ -67,7 +83,12 @@ public class JE10 {
 		return count;
 	}
 	
-	static int findGroup(int[][] dist) {
-
+	static void SearchGroup(int[][] dist, int[] boxgroup, int n, int groupnum) {
+		for(int i=0; i<dist[n].length; i++) {
+			if(i!=n && dist[n][i] <= 2 && boxgroup[i]<0) {
+				boxgroup[i] = groupnum;
+				SearchGroup(dist, boxgroup, i, groupnum);
+			}
+		}
 	}
 }
