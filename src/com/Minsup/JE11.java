@@ -52,15 +52,14 @@ public class JE11 {
 	static BinaryNode<Integer> MakeMirror(BinaryNode<Integer> root) {
 		BinaryNode<Integer> root2=null;
 		if(root==null) return null;
-		else {
-			if(root2==null) {
-				root2 = new BinaryNode<>();
-				root2.value = root.value;
-				root2.left = root2.right = null;
-			}
-			root2.right = MakeMirror(root.left);
-			root2.left = MakeMirror(root.right);
+
+		if(root2==null) {
+			root2 = new BinaryNode<>();
+			root2.value = root.value;
 		}
+		root2.right = MakeMirror(root.left);
+		root2.left = MakeMirror(root.right);
+
 		return root2;
 	}
 	
